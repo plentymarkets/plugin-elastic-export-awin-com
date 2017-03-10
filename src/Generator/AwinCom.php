@@ -46,6 +46,7 @@ class AwinCOM extends CSVPluginGenerator
      *
      * @param array $resultData
      * @param array $formatSettings
+     * @param array $filter
      */
     protected function generatePluginContent($resultData, array $formatSettings = [], array $filter = [])
     {
@@ -102,10 +103,12 @@ class AwinCOM extends CSVPluginGenerator
 
             foreach($resultData['documents'] as $variation)
             {
+                // Get price and base price information list
                 $price = $this->idlVariations[$variation['id']]['variationRetailPrice.price'];
                 $basePriceList = $this->elasticExportCoreHelper->getBasePriceList($variation, $price, $settings->get('lang'));
-                $shippingCost = $this->elasticExportCoreHelper->getShippingCost($variation['data']['item']['id'], $settings);
 
+                // Get shipping costs
+                $shippingCost = $this->elasticExportCoreHelper->getShippingCost($variation['data']['item']['id'], $settings);
                 if(!is_null($shippingCost))
                 {
                     $shippingCost = number_format((float)$shippingCost, 2, '.', '');
@@ -119,7 +122,7 @@ class AwinCOM extends CSVPluginGenerator
                     'prod_number'           => $variation['id'],
                     'prod_name'             => strip_tags(html_entity_decode($this->elasticExportCoreHelper->getName($variation, $settings))),
                     'prod_price'            => number_format((float)$price, 2, '.', ''),
-                    'currency_symbol'       => $variation->variationRetailPrice->currency,
+                    'currency_symbol'       => $this->idlVariations[$variation['id']]['variationRetailPrice.currency'],
                     'category'              => $this->elasticExportCoreHelper->getCategory((int)$variation['data']['defaultCategories'][0]['id'], $settings->get('lang'), $settings->get('plentyId')),
                     'prod_description'      => strip_tags(html_entity_decode($this->elasticExportCoreHelper->getPreviewText($variation, $settings, 256))),
                     'prod_description_long' => strip_tags(html_entity_decode($this->elasticExportCoreHelper->getDescription($variation, $settings, 256))),
@@ -128,7 +131,7 @@ class AwinCOM extends CSVPluginGenerator
                     'img_large'             => $this->elasticExportCoreHelper->getMainImage($variation, $settings, 'normal'),
                     'manufacturer'          => $this->elasticExportCoreHelper->getExternalManufacturerName((int)$variation['data']['item']['manufacturer']['id']),
                     'prod_url'              => $this->elasticExportCoreHelper->getUrl($variation, $settings, true, false),
-                    'prod_ean'              => $variation['data']['barcodes']['code'],
+                    'prod_ean'              => $this->elasticExportCoreHelper->getBarcodeByType($variation, $settings->get('barcode')),
                     'shipping_costs'        => $shippingCost,
                     'base_price'            => $this->elasticExportCoreHelper->getBasePrice($variation, $this->idlVariations[$variation['id']], $settings->get('lang'), '/', false, true, '', 0.0, false),
                     'base_price_amount'     => $basePriceList['lot'],
@@ -157,8 +160,7 @@ class AwinCOM extends CSVPluginGenerator
                         'itemBase.id' => $idlVariation->itemBase->id,
                         'variationBase.id' => $idlVariation->variationBase->id,
                         'variationRetailPrice.price' => $idlVariation->variationRetailPrice->price,
-                        'variationRetailPrice.currency' => $idlVariation->variationRetailPrice->currency,
-                        'variationRecommendedRetailPrice.price' => $idlVariation->variationRecommendedRetailPrice->price,
+                        'variationRetailPrice.currency' => $idlVariation->variationRetailPrice->currency
                     ];
                 }
             }

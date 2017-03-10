@@ -49,15 +49,6 @@ class AwinCOM
                     'id',
                 ),
 
-                'variationStock' => array(
-                    'params' => array(
-                        'type' => 'virtual'
-                    ),
-                    'fields' => array(
-                        'stockNet'
-                    )
-                ),
-
                 'variationRetailPrice' => array(
                     'params' => array(
                         'referrerId' => $settings->get('referrerId') ? $settings->get('referrerId') : -1,

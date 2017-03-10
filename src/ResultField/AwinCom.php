@@ -92,34 +92,25 @@ class AwinCOM extends ResultFields
 
                 //variation
                 'id',
-                'variation.availability.id',
 
                 //images
                 'images.item.type',
                 'images.item.path',
                 'images.item.fileType',
-                'images.item.position',
                 'images.variation.type',
                 'images.variation.path',
                 'images.variation.fileType',
-                'images.variation.position',
 
                 //unit
                 'unit.id',
                 'unit.content',
 
                 //barcodes
-                'barcodes.id',
                 'barcodes.code',
                 'barcodes.type',
 
                 //defaultCategories
                 'defaultCategories.id',
-
-                //attributes
-                'attributes.attributeId',
-                'attributes.valueId',
-                'attributes.attributeValueSetId',
             ],
             [
                 $languageMutator,
