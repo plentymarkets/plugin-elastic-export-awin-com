@@ -5,9 +5,9 @@
 
 ## Bei Awin.com registrieren
 
-Awin.com bietet performance-basiertes Online- und Affiliate-Marketing an.
+Awin.com (früher zanox.de) bietet performance-basiertes Online- und Affiliate-Marketing an.
 
-## Elastic Export AwinCOM-Plugin in plentymarkets einrichten
+## Datenformat AwinCOM-Plugin in plentymarkets einrichten
 
 Um dieses Format nutzen zu können, benötigen Sie das Plugin Elastic Export.
 
