@@ -5,7 +5,7 @@
 
 ## Registering with Awin.com
 
-Awin.com offers performance-based online and affiliate marketing.
+Awin.com (former zanox.de) offers performance-based online and affiliate marketing.
 
 ## Setting up the data format AwinCOM-Plugin in plentymarkets
 
