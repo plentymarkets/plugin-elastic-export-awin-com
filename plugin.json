@@ -9,7 +9,7 @@
   "description": "This plugin adds the format Awin.com to the Elastic Export.",
   "shortDescription": {
     "de": "Das Plugin ElasticExportAwinCOM fügt das Datenformat AwinCOM-Plugin zum Elastischen Export hinzu.",
-    "en": "This plugin adds the format AwinCOM-Plugin to the Elastic Export."
+    "en": "This plugin adds the format AwinCOM-Plugin to the elastic export."
   },
   "categories": [
     "3523"
