@@ -7,10 +7,10 @@ use Plenty\Plugin\DataExchangeServiceProvider;
 
 
 /**
- * Class ElasticExportAwinComServiceProvider
- * @package ElasticExportAwinCom
+ * Class ElasticExportAwinCOMServiceProvider
+ * @package ElasticExportAwinCOM
  */
-class ElasticExportAwinComServiceProvider extends DataExchangeServiceProvider
+class ElasticExportAwinCOMServiceProvider extends DataExchangeServiceProvider
 {
     /**
      * Abstract function for registering the service provider.
@@ -29,8 +29,8 @@ class ElasticExportAwinComServiceProvider extends DataExchangeServiceProvider
     {
         $container->add(
             'AwinCOM-Plugin',
-            'ElasticExportAwinCom\ResultField\AwinCOM',
-            'ElasticExportAwinCom\Generator\AwinCOM',
+            'ElasticExportAwinCOM\ResultField\AwinCOM',
+            'ElasticExportAwinCOM\Generator\AwinCOM',
             '',
             true
         );
