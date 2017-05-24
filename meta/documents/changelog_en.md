@@ -1,5 +1,10 @@
 # Release Notes for Elastic Export Awin.com
 
+## v1.0.4 (2017-05-24)
+
+### Changed
+- The plugin Elastic Export is now required to use the plugin format AwinCOM.
+
 ## v1.0.3 (2017-03-22)
 
 ### Fixed
