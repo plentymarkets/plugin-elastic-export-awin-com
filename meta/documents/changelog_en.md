@@ -1,5 +1,16 @@
 # Release Notes for Elastic Export Awin.com
 
+## v1.0.5 (2017-06-08)
+
+### Changed
+- The plugin Elastic Export is now required to use the plugin format AwinCOM.
+
+### Fixed
+- An issue was fixed which caused elastic search to ignore the set referrers for the barcodes.
+- An issue was fixed which caused the stock filter not to be correctly evaluated.
+- An issue was fixed which caused the variations not to be exported in the correct order.
+- An issue was fixed which caused the export format to export texts in the wrong language.
+
 ## v1.0.4 (2017-05-24)
 
 ### Changed

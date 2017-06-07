@@ -5,7 +5,6 @@ namespace ElasticExportAwinCOM;
 use Plenty\Modules\DataExchange\Services\ExportPresetContainer;
 use Plenty\Plugin\DataExchangeServiceProvider;
 
-
 /**
  * Class ElasticExportAwinCOMServiceProvider
  * @package ElasticExportAwinCOM
@@ -32,6 +31,7 @@ class ElasticExportAwinCOMServiceProvider extends DataExchangeServiceProvider
             'ElasticExportAwinCOM\ResultField\AwinCOM',
             'ElasticExportAwinCOM\Generator\AwinCOM',
             '',
+            true,
             true
         );
     }

@@ -2,11 +2,14 @@
 
 namespace ElasticExportAwinCOM\ResultField;
 
+use Plenty\Modules\Cloud\ElasticSearch\Lib\ElasticSearch;
 use Plenty\Modules\Cloud\ElasticSearch\Lib\Source\Mutator\BuiltIn\LanguageMutator;
 use Plenty\Modules\DataExchange\Contracts\ResultFields;
 use Plenty\Modules\Helper\Services\ArrayHelper;
+use Plenty\Modules\Item\Search\Mutators\BarcodeMutator;
+use Plenty\Modules\Item\Search\Mutators\DefaultCategoryMutator;
 use Plenty\Modules\Item\Search\Mutators\ImageMutator;
-
+use Plenty\Modules\Item\Search\Mutators\KeyMutator;
 
 /**
  * Class AwinCOM
@@ -14,11 +17,12 @@ use Plenty\Modules\Item\Search\Mutators\ImageMutator;
  */
 class AwinCOM extends ResultFields
 {
+    const ALL_MARKET_REFERENCE = -1;
+
     /**
      * @var ArrayHelper
      */
     private $arrayHelper;
-
 
     /**
      * AwinCOM constructor.
@@ -40,11 +44,11 @@ class AwinCOM extends ResultFields
     {
         $settings = $this->arrayHelper->buildMapFromObjectList($formatSettings, 'key', 'value');
 
-        $reference = $settings->get('referrerId') ? $settings->get('referrerId') : -1;
+        $reference = $settings->get('referrerId') ? $settings->get('referrerId') : self::ALL_MARKET_REFERENCE;
 
-        $this->setOrderByList(['variation.itemId', 'ASC']);
+        $this->setOrderByList(['item.id', ElasticSearch::SORTING_ORDER_ASC]);
 
-        $itemDescriptionFields = ['texts.urlPath'];
+        $itemDescriptionFields = ['texts.urlPath', 'texts.lang'];
 
         $itemDescriptionFields[] = ($settings->get('nameId')) ? 'texts.name' . $settings->get('nameId') : 'texts.name1';
 
@@ -75,13 +79,45 @@ class AwinCOM extends ResultFields
         $imageMutator = pluginApp(ImageMutator::class);
         if($imageMutator instanceof ImageMutator)
         {
+            // add image reference for a specific market
             $imageMutator->addMarket($reference);
+
+            // add image reference -1 when the image is available for all markets
+            $imageMutator->addMarket(self::ALL_MARKET_REFERENCE);
+        }
+
+        /**
+         * @var KeyMutator $keyMutator
+         */
+        $keyMutator = pluginApp(KeyMutator::class);
+        if($keyMutator instanceof KeyMutator)
+        {
+            $keyMutator->setKeyList($this->getKeyList());
+            $keyMutator->setNestedKeyList($this->getNestedKeyList());
         }
 
         /**
          * @var LanguageMutator $languageMutator
          */
         $languageMutator = pluginApp(LanguageMutator::class, [[$settings->get('lang')]]);
+
+        /**
+         * @var DefaultCategoryMutator $defaultCategoryMutator
+         */
+        $defaultCategoryMutator = pluginApp(DefaultCategoryMutator::class);
+        if($defaultCategoryMutator instanceof DefaultCategoryMutator)
+        {
+            $defaultCategoryMutator->setPlentyId($settings->get('plentyId'));
+        }
+
+        /**
+         * @var BarcodeMutator $barcodeMutator
+         */
+        $barcodeMutator = pluginApp(BarcodeMutator::class);
+        if($barcodeMutator instanceof BarcodeMutator)
+        {
+            $barcodeMutator->addMarket($reference);
+        }
 
         // Fields
         $fields = [
@@ -126,13 +162,18 @@ class AwinCOM extends ResultFields
                 //defaultCategories
                 'defaultCategories.id',
             ],
+
             [
+                //mutators
+                $keyMutator,
                 $languageMutator,
+                $defaultCategoryMutator,
+                $barcodeMutator,
             ],
         ];
 
         // Get the associated images if reference is selected
-        if($reference != -1)
+        if($reference != self::ALL_MARKET_REFERENCE)
         {
             $fields[1][] = $imageMutator;
         }
@@ -144,5 +185,102 @@ class AwinCOM extends ResultFields
         }
 
         return $fields;
+    }
+
+    /**
+     * Returns the list of keys.
+     *
+     * @return array
+     */
+    private function getKeyList()
+    {
+        $keyList = [
+            //item
+            'item.id',
+            'item.manufacturer.id',
+
+            //unit
+            'unit.content',
+            'unit.id'
+        ];
+
+        return $keyList;
+    }
+
+    /**
+     * Returns the list of nested keys.
+     *
+     * @return mixed
+     */
+    private function getNestedKeyList()
+    {
+        $nestedKeyList['keys'] = [
+            //images
+            'images.all',
+            'images.item',
+            'images.variation',
+
+            //texts
+            'texts',
+
+            //defaultCategories
+            'defaultCategories',
+
+            //barcodes
+            'barcodes',
+        ];
+
+        $nestedKeyList['nestedKeys'] = [
+            //images
+            'images.all' => [
+                'urlMiddle',
+                'urlPreview',
+                'urlSecondPreview',
+                'url',
+                'path',
+                'position',
+            ],
+            'images.item' => [
+                'urlMiddle',
+                'urlPreview',
+                'urlSecondPreview',
+                'url',
+                'path',
+                'position',
+            ],
+            'images.variation' => [
+                'urlMiddle',
+                'urlPreview',
+                'urlSecondPreview',
+                'url',
+                'path',
+                'position',
+            ],
+
+            //texts
+            'texts' => [
+                'urlPath',
+                'lang',
+                'name1',
+                'name2',
+                'name3',
+                'shortDescription',
+                'description',
+                'technicalData',
+            ],
+
+            //defaultCategories
+            'defaultCategories' => [
+                'id',
+            ],
+
+            //barcodes
+            'barcodes' => [
+                'code',
+                'type',
+            ],
+        ];
+
+        return $nestedKeyList;
     }
 }
