@@ -8,7 +8,6 @@
 ### Fixed
 - An issue was fixed which caused the elastic search to ignore the set referrers for the barcodes.
 - An issue was fixed which caused the stock filter not to be evaluated correctly.
-- An issue was fixed which caused the stock filter not to be evaluated.
 - An issue was fixed which caused the variations not to be exported in the correct order.
 - An issue was fixed which caused the export format to export texts in the wrong language.
 
