@@ -55,17 +55,10 @@ class AwinCOM extends CSVPluginGenerator
      * AwinCOM constructor.
      *
      * @param ArrayHelper $arrayHelper
-     * @param ElasticExportStockHelper $elasticExportStockHelper
-     * @param ElasticExportPriceHelper $elasticExportPriceHelper
      */
-    public function __construct(
-        ArrayHelper $arrayHelper,
-        ElasticExportStockHelper $elasticExportStockHelper,
-        ElasticExportPriceHelper $elasticExportPriceHelper)
+    public function __construct(ArrayHelper $arrayHelper)
     {
         $this->arrayHelper = $arrayHelper;
-        $this->elasticExportStockHelper = $elasticExportStockHelper;
-        $this->elasticExportPriceHelper = $elasticExportPriceHelper;
     }
 
     /**
@@ -78,6 +71,10 @@ class AwinCOM extends CSVPluginGenerator
     protected function generatePluginContent($elasticSearch, array $formatSettings = [], array $filter = [])
     {
         $this->elasticExportHelper = pluginApp(ElasticExportCoreHelper::class);
+
+        $this->elasticExportStockHelper = pluginApp(ElasticExportStockHelper::class);
+
+        $this->elasticExportPriceHelper = pluginApp(ElasticExportPriceHelper::class);
 
         $settings = $this->arrayHelper->buildMapFromObjectList($formatSettings, 'key', 'value');
 
@@ -296,9 +293,9 @@ class AwinCOM extends CSVPluginGenerator
             $shippingCost = $this->shippingCostCache[$variation['data']['item']['id']];
         }
 
-        if(!is_null($shippingCost))
+        if(!is_null($shippingCost) && $shippingCost != '0.00')
         {
-            return number_format((float)$shippingCost, 2, '.', '');
+            return $shippingCost;
         }
 
         return '';
@@ -330,9 +327,11 @@ class AwinCOM extends CSVPluginGenerator
     {
         if(!is_null($variation) && !is_null($variation['data']['item']['id']))
         {
-            $this->shippingCostCache[$variation['data']['item']['id']] = $this->elasticExportHelper->getShippingCost($variation['data']['item']['id'], $settings, 0);
+            $shippingCost = $this->elasticExportHelper->getShippingCost($variation['data']['item']['id'], $settings, 0);
+            $this->shippingCostCache[$variation['data']['item']['id']] = number_format((float)$shippingCost, 2, '.', '');
 
-            $this->manufacturerCache[$variation['data']['item']['id']] = $this->elasticExportHelper->getExternalManufacturerName((int)$variation['data']['item']['manufacturer']['id']);
+            $manufacturer = $this->elasticExportHelper->getExternalManufacturerName((int)$variation['data']['item']['manufacturer']['id']);
+            $this->manufacturerCache[$variation['data']['item']['id']] = $manufacturer;
         }
     }
 }
