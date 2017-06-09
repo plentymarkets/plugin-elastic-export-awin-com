@@ -201,7 +201,7 @@ class AwinCOM extends ResultFields
 
             //unit
             'unit.content',
-            'unit.id'
+            'unit.id',
         ];
 
         return $keyList;

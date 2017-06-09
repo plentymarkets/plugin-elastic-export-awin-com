@@ -160,7 +160,7 @@ class AwinCOM extends CSVPluginGenerator
                         }
                         catch(\Throwable $throwable)
                         {
-                            $this->getLogger(__METHOD__)->error('ElasticExportCheck24DE::logs.fillRowError', [
+                            $this->getLogger(__METHOD__)->error('ElasticExportAwinCOM::logs.fillRowError', [
                                 'Error message ' => $throwable->getMessage(),
                                 'Error line'     => $throwable->getLine(),
                                 'VariationId'    => (string)$variation['id']
