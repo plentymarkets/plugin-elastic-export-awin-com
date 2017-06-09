@@ -1,5 +1,16 @@
 # Release Notes für Elastic Export Awin.com
 
+## v1.0.5 (2017-06-09)
+
+### Geändert
+- Das Plugin Elastic Export ist nun Voraussetzung zur Nutzung des Pluginformats AwinCOM.
+
+### Behoben
+- Es wurde ein Fehler behoben, der dazu geführt hat, dass bei dem Barcode die Marktplatzverfügbarkeit ignoriert wurde.
+- Es wurde ein Fehler behoben, bei dem der Bestand nicht korrekt ausgewertet wurde.
+- Es wurde ein Fehler behoben, bei dem Varianten nicht in der richtigen Reihenfolge gelistet wurden.
+- Es wurde ein Fehler behoben, der dazu geführt hat, dass das Exportformat Texte in der falschen Sprache exportierte.
+
 ## v1.0.4 (2017-05-24)
 
 ### Geändert
