@@ -81,9 +81,6 @@ class AwinCOM extends ResultFields
         {
             // add image reference for a specific market
             $imageMutator->addMarket($reference);
-
-            // add image reference -1 when the image is available for all markets
-            $imageMutator->addMarket(self::ALL_MARKET_REFERENCE);
         }
 
         /**
@@ -165,10 +162,10 @@ class AwinCOM extends ResultFields
 
             [
                 //mutators
-                $keyMutator,
                 $languageMutator,
                 $defaultCategoryMutator,
                 $barcodeMutator,
+				$keyMutator,
             ],
         ];
 
