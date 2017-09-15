@@ -62,7 +62,7 @@ The following table lists details for settings, format settings and recommended 
             Active
         </td>
         <td>
-            Choose <b>active</b>.
+            Choose <b>Active</b>.
         </td>        
     </tr>
     <tr>
@@ -136,7 +136,7 @@ The following table lists details for settings, format settings and recommended 
 			prod_name
 		</td>
 		<td>
-			<b>Content:</b> According to the format setting <b>item name</b>.
+			<b>Content:</b> According to the format setting <b>Item name</b>.
 		</td>        
 	</tr>
 	<tr>
@@ -192,7 +192,7 @@ The following table lists details for settings, format settings and recommended 
 			img_medium
 		</td>
 		<td>
-			<b>Content:</b> The image middle URL.Variation images are prioritizied over item images.
+			<b>Content:</b> The image middle URL. Variation images are prioritizied over item images.
 		</td>        
 	</tr>
 	<tr>
@@ -208,7 +208,7 @@ The following table lists details for settings, format settings and recommended 
 			manufacturer
 		</td>
 		<td>
-			<b>Content:</b> The <b>name of the manufacturer</b> of the item. The <b>external name</b> in the menu <b>Settings » Items » Manufacturer</b> will be preferred if existing.
+			<b>Content:</b> The <b>name of the manufacturer</b> of the item. The <b>External name</b> in the menu <b>Settings » Items » Manufacturer</b> will be preferred if existing.
 		</td>        
 	</tr>
 	<tr>
@@ -232,7 +232,7 @@ The following table lists details for settings, format settings and recommended 
 			shipping_costs
 		</td>
 		<td>
-			<b>Content:</b> According to the format setting <b>shipping costs</b>.
+			<b>Content:</b> According to the format setting <b>Shipping costs</b>.
 		</td>        
 	</tr>
 	<tr>
@@ -248,7 +248,7 @@ The following table lists details for settings, format settings and recommended 
 			base_price_amount
 		</td>
 		<td>
-			<b>Content:</b> The <b>Lot</b> of the variation.
+			<b>Content:</b> The <b>content</b> of the variation.
 		</td>
 	</tr>
 	<tr>
@@ -256,7 +256,7 @@ The following table lists details for settings, format settings and recommended 
 			base_price_unit
 		</td>
 		<td>
-			<b>Content:</b> The <b>Unit</b> based on the <b>base_price</b>.
+			<b>Content:</b> The <b>unit</b> based on the <b>base_price</b>.
 		</td>        
 	</tr>
 </table>
