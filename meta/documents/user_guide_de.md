@@ -152,7 +152,7 @@ In der folgenden Tabelle finden Sie Hinweise zu den Einstellungen, Formateinstel
 			category
 		</td>
 		<td>
-			<<b>Inhalt:</b> Der <b>Kategorie-Pfad</b> der Standard-Kategorie für den in den Formateinstellungen definierten <b>Mandanten</b>.
+			<<b>Inhalt:</b> Der <b>Kategorie-Pfad</b> der Standardkategorie für den in den Formateinstellungen definierten <b>Mandanten</b>.
 		</td>        
 	</tr>
 	<tr>
@@ -176,7 +176,7 @@ In der folgenden Tabelle finden Sie Hinweise zu den Einstellungen, Formateinstel
 			img_small
 		</td>
 		<td>
-			<b>Inhalt:</b> Preview URL des Bildes. Variantenbiler werden vor Artikelbildern priorisiert.
+			<b>Inhalt:</b> Preview-URL des Bildes. Variantenbiler werden vor Artikelbildern priorisiert.
 		</td>        
 	</tr>
 	<tr>
@@ -184,7 +184,7 @@ In der folgenden Tabelle finden Sie Hinweise zu den Einstellungen, Formateinstel
 			img_medium
 		</td>
 		<td>
-			<b>Inhalt:</b> Middle URL des Bildes. Variantenbiler werden vor Artikelbildern priorisiert.
+			<b>Inhalt:</b> Middle-URL des Bildes. Variantenbiler werden vor Artikelbildern priorisiert.
 		</td>        
 	</tr>
 	<tr>
