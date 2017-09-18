@@ -49,7 +49,7 @@ The following table lists details for settings, format settings and recommended 
             File name
         </td>
         <td>
-            The file name must have the ending <b>.csv</b> or <b>.txt</b> for kauflux.de to be able to import the file successfully.
+            The file name must have the ending <b>.csv</b> awin.com to be able to import the file successfully.
         </td>        
     </tr>
     <tr>
