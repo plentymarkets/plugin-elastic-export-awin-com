@@ -1,5 +1,13 @@
 # Release Notes for Elastic Export Awin.com
 
+## v1.0.6 (14.09.2017)
+
+### Fixed
+- Getting the image is now based on the position.
+
+### Changed
+- Reworked the user guide.
+
 ## v1.0.5 (2017-06-09)
 
 ### Changed

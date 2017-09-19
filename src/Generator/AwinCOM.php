@@ -82,8 +82,6 @@ class AwinCOM extends CSVPluginGenerator
 
         $this->addCSVContent($this->head());
 
-        $startTime = microtime(true);
-
         if($elasticSearch instanceof VariationElasticSearchScrollRepositoryContract)
         {
             // Initiate the counter for the variations limit
@@ -92,24 +90,14 @@ class AwinCOM extends CSVPluginGenerator
 
             do
             {
-                $this->getLogger(__METHOD__)->debug('ElasticExportAwinCOM::log.writtenLines', [
-                    'Lines written' => $limit,
-                ]);
-
                 // Stop writing if limit is reached
                 if($limitReached === true)
                 {
                     break;
                 }
 
-                $esStartTime = microtime(true);
-
                 // Get the data from Elastic Search
                 $resultList = $elasticSearch->execute();
-
-                $this->getLogger(__METHOD__)->debug('ElasticExportAwinCOM::log.esDuration', [
-                    'Elastic Search duration' => microtime(true) - $esStartTime,
-                ]);
 
                 if(count($resultList['error']) > 0)
                 {
@@ -117,8 +105,6 @@ class AwinCOM extends CSVPluginGenerator
                         'Error message' => $resultList['error'],
                     ]);
                 }
-
-                $buildRowsStartTime = microtime(true);
 
                 if(is_array($resultList['documents']) && count($resultList['documents']) > 0)
                 {
@@ -136,10 +122,6 @@ class AwinCOM extends CSVPluginGenerator
                         // If filtered by stock is set and stock is negative, then skip the variation
                         if($this->elasticExportStockHelper->isFilteredByStock($variation, $filter) === true)
                         {
-                            $this->getLogger(__METHOD__)->info('ElasticExportAwinCOM::log.variationNotPartOfExportStock', [
-                                'VariationId' => (string)$variation['id']
-                            ]);
-
                             continue;
                         }
 
@@ -170,18 +152,10 @@ class AwinCOM extends CSVPluginGenerator
                         // New line was added
                         $limit++;
                     }
-
-                    $this->getLogger(__METHOD__)->debug('ElasticExportAwinCOM::log.buildRowsDuration', [
-                        'Build rows duration' => microtime(true) - $buildRowsStartTime,
-                    ]);
                 }
 
             } while ($elasticSearch->hasNext());
         }
-
-        $this->getLogger(__METHOD__)->debug('ElasticExportAwinCOM::log.fileGenerationDuration', [
-            'Whole file generation duration' => microtime(true) - $startTime,
-        ]);
     }
 
     /**
@@ -220,12 +194,6 @@ class AwinCOM extends CSVPluginGenerator
      */
     private function buildRow($variation, KeyValue $settings)
     {
-        $this->getLogger(__METHOD__)->debug('ElasticExportAwinCOM::log.variationConstructRow', [
-            'Data row duration' => 'Row printing start'
-        ]);
-
-        $rowTime = microtime(true);
-
         // Get the price list
         $priceList = $this->elasticExportPriceHelper->getPriceList($variation, $settings);
 
@@ -238,12 +206,23 @@ class AwinCOM extends CSVPluginGenerator
             // Get the manufacturer
             $manufacturer = $this->getManufacturer($variation);
 
+			$imageData = $this->elasticExportHelper->getImageListInOrder($variation, $settings, 1, $this->elasticExportHelper::VARIATION_IMAGES, $this->elasticExportHelper::SIZE_NORMAL, true);
+
+			$imagePreview = '';
+			$imageMiddle = '';
+			$imageLarge = '';
+
+			if(count($imageData))
+			{
+				$imagePreview = $imageData[0]['urlPreview'];
+				$imageMiddle = $imageData[0]['urlMiddle'];
+				$imageLarge = $imageData[0]['url'];
+			}
+
             // Get base price
             $price['variationRetailPrice.price'] = $priceList['price'];
-            $basePrice = $this->elasticExportHelper->getBasePrice($variation, $price, $settings->get('lang'), '/', false, true, '', 0.0, false);
 
-            // Get base price information list
-            $basePriceList = $this->elasticExportHelper->getBasePriceList($variation, (float)$priceList['price'], $settings->get('lang'));
+            $basePriceDetail = $this->elasticExportPriceHelper->getBasePriceDetails($variation, (float)$priceList['price'], $settings->get('lang'));
 
             $data = [
                 'prod_number'           => $variation['id'],
@@ -253,23 +232,19 @@ class AwinCOM extends CSVPluginGenerator
                 'category'              => $this->elasticExportHelper->getCategory((int)$variation['data']['defaultCategories'][0]['id'], $settings->get('lang'), $settings->get('plentyId')),
                 'prod_description'      => strip_tags(html_entity_decode($this->elasticExportHelper->getMutatedPreviewText($variation, $settings, 256))),
                 'prod_description_long' => strip_tags(html_entity_decode($this->elasticExportHelper->getMutatedDescription($variation, $settings, 256))),
-                'img_small'             => $this->elasticExportHelper->getMainImage($variation, $settings, 'preview'),
-                'img_medium'            => $this->elasticExportHelper->getMainImage($variation, $settings, 'middle'),
-                'img_large'             => $this->elasticExportHelper->getMainImage($variation, $settings, 'normal'),
+                'img_small'             => $imagePreview,
+                'img_medium'            => $imageMiddle,
+                'img_large'             => $imageLarge,
                 'manufacturer'          => $manufacturer,
                 'prod_url'              => $this->elasticExportHelper->getMutatedUrl($variation, $settings, true, false),
                 'prod_ean'              => $this->elasticExportHelper->getBarcodeByType($variation, $settings->get('barcode')),
                 'shipping_costs'        => $shippingCost,
-                'base_price'            => $basePrice,
-                'base_price_amount'     => $basePriceList['lot'],
-                'base_price_unit'       => $basePriceList['unit'],
+                'base_price'            => $basePriceDetail['price'],
+                'base_price_amount'     => $basePriceDetail['lot'],
+                'base_price_unit'       => $basePriceDetail['unitShortName'],
             ];
 
             $this->addCSVContent(array_values($data));
-
-            $this->getLogger(__METHOD__)->debug('ElasticExportAwinCOM::log.variationConstructRowFinished', [
-                'Data row duration' => 'Row printing took: ' . (microtime(true) - $rowTime),
-            ]);
         }
         else
         {
