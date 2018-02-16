@@ -1,5 +1,10 @@
 # Release Notes for Elastic Export Awin.com
 
+## v1.0.7 (2018-02-16)
+
+### Changed
+- Updated plugin short description.
+
 ## v1.0.6 (14.09.2017)
 
 ### Fixed
