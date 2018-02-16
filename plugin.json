@@ -2,14 +2,14 @@
   "name": "ElasticExportAwinCOM",
   "namespace": "ElasticExportAwinCOM",
   "type": "export",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "license": "GNU AFFERO GENERAL PUBLIC LICENSE Version 3, 19 November 2007",
   "pluginIcon": "icon_plugin_md.png",
   "price": 0.00,
   "description": "This plugin adds the format Awin.com to the Elastic Export.",
   "shortDescription": {
-    "de": "Das Plugin ElasticExportAwinCOM fügt das Datenformat AwinCOM-Plugin zum Elastischen Export hinzu.",
-    "en": "This plugin adds the format AwinCOM-Plugin to the elastic export."
+    "de": "Die Integration des Datenformats Awin-Plugin ermöglicht die Artikeldatenübertragung zum Affiliate-Dienstleister Awin über den elastischen Export.",
+    "en": "The integration of the data format Awin-Plugin enables the transfer of item data to the affiliate service provider Awin via the elastic export."
   },
   "categories": [
     "3521"
