@@ -5,7 +5,7 @@
 ### Geändert
 - Plugin-Kurzbeschreibung wurde angepasst.
 
-## v1.0.6 (14.09.2017)
+## v1.0.6 (2017-09-14)
 
 ### Behoben
 - Das Bild wird jetzt anhand der Position bestimmt.

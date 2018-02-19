@@ -5,7 +5,7 @@
 ### Changed
 - Updated plugin short description.
 
-## v1.0.6 (14.09.2017)
+## v1.0.6 (2017-09-14)
 
 ### Fixed
 - Getting the image is now based on the position.
