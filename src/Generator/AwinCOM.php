@@ -5,6 +5,7 @@ namespace ElasticExportAwinCOM\Generator;
 use ElasticExport\Helper\ElasticExportCoreHelper;
 use ElasticExport\Helper\ElasticExportPriceHelper;
 use ElasticExport\Helper\ElasticExportStockHelper;
+use ElasticExport\Services\FiltrationService;
 use Plenty\Modules\DataExchange\Contracts\CSVPluginGenerator;
 use Plenty\Modules\Helper\Services\ArrayHelper;
 use Plenty\Modules\Helper\Models\KeyValue;
@@ -52,6 +53,11 @@ class AwinCOM extends CSVPluginGenerator
     private $manufacturerCache;
 
     /**
+     * @var FiltrationService
+     */
+    private $filtrationService;
+
+    /**
      * AwinCOM constructor.
      *
      * @param ArrayHelper $arrayHelper
@@ -71,12 +77,11 @@ class AwinCOM extends CSVPluginGenerator
     protected function generatePluginContent($elasticSearch, array $formatSettings = [], array $filter = [])
     {
         $this->elasticExportHelper = pluginApp(ElasticExportCoreHelper::class);
-
         $this->elasticExportStockHelper = pluginApp(ElasticExportStockHelper::class);
-
         $this->elasticExportPriceHelper = pluginApp(ElasticExportPriceHelper::class);
 
         $settings = $this->arrayHelper->buildMapFromObjectList($formatSettings, 'key', 'value');
+        $this->filtrationService = pluginApp(FiltrationService::class, [$settings, $filter]);
 
         $this->setDelimiter(self::DELIMITER);
 
@@ -120,7 +125,7 @@ class AwinCOM extends CSVPluginGenerator
                         }
 
                         // If filtered by stock is set and stock is negative, then skip the variation
-                        if($this->elasticExportStockHelper->isFilteredByStock($variation, $filter) === true)
+                        if($this->filtrationService->filter($variation))
                         {
                             continue;
                         }
