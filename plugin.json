@@ -2,7 +2,7 @@
   "name": "ElasticExportAwinCOM",
   "namespace": "ElasticExportAwinCOM",
   "type": "export",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "license": "GNU AFFERO GENERAL PUBLIC LICENSE Version 3, 19 November 2007",
   "pluginIcon": "icon_plugin_md.png",
   "price": 0.00,
@@ -14,10 +14,7 @@
   "categories": [
     "3521"
   ],
-  "marketplaceName": {
-    "de":"Awin.com",
-    "en":"Awin.com"
-  },
+  "marketplaceName": "Awin.com",
   "author": "plentymarkets GmbH",
   "require": ["ElasticExport"],
   "authorIcon": "icon_author_xs.png",
