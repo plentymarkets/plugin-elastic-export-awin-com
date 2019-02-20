@@ -1,5 +1,10 @@
 # Release Notes für Elastic Export Awin.com
 
+## v1.0.10 (2019-02-20)
+
+### Geändert
+- Der User Guide wurde angepasst.
+
 ## v1.0.9 (2018-04-30)
 
 ### Geändert
