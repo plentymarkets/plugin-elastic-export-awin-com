@@ -9,19 +9,19 @@ Awin.com (früher zanox.de) bietet performance-basiertes Online- und Affiliate-M
 
 ## 2 Das Format AwinCOM-Plugin in plentymarkets einrichten
 
-Mit der Installation dieses Plugins erhalten Sie das Exportformat **AwinCOM-Plugin**, mit dem Sie Daten über den elastischen Export zu Awin übertragen. Um dieses Format für den elastischen Export nutzen zu können, installieren Sie zunächst das Plugin **Elastic Export** aus dem plentyMarketplace, wenn noch nicht geschehen. 
+Mit der Installation dieses Plugins erhältst du das Exportformat **AwinCOM-Plugin**, mit dem du Daten über den elastischen Export zu Awin überträgst. Um dieses Format für den elastischen Export nutzen zu können, installiere zunächst das Plugin **Elastic Export** aus dem plentyMarketplace, wenn noch nicht geschehen. 
 
-Sobald beide Plugins in Ihrem System installiert sind, kann das Exportformat **AwinCOM-Plugin** erstellt werden. Weitere Informationen finden Sie auf der Handbuchseite [Elastischer Export](https://knowledge.plentymarkets.com/daten/daten-exportieren/elastischer-export).
+Sobald beide Plugins in deinem System installiert sind, kann das Exportformat **AwinCOM-Plugin** erstellt werden. Weitere Informationen findest du auf der Handbuchseite [Elastischer Export](https://knowledge.plentymarkets.com/daten/daten-exportieren/elastischer-export).
 
 Neues Exportformat erstellen:
 
-1. Öffnen Sie das Menü **Daten » Elastischer Export**.
-2. Klicken Sie auf **Neuer Export**.
-3. Nehmen Sie die Einstellungen vor. Beachten Sie dazu die Erläuterungen in Tabelle 1.
-4. **Speichern** Sie die Einstellungen.
+1. Öffne das Menü **Daten » Elastischer Export**.
+2. Klicke auf **Neuer Export**.
+3. Nimm die Einstellungen vor. Beachte dazu die Erläuterungen in Tabelle 1.
+4. **Speichere** die Einstellungen.<br/>
 → Eine ID für das Exportformat **AwinCOM-Plugin** wird vergeben und das Exportformat erscheint in der Übersicht **Exporte**.
 
-In der folgenden Tabelle finden Sie Hinweise zu den einzelnen Formateinstellungen und empfohlenen Artikelfiltern für das Format **AwinCOM-Plugin**.
+In der folgenden Tabelle findest du Hinweise zu den einzelnen Formateinstellungen und empfohlenen Artikelfiltern für das Format **AwinCOM-Plugin**.
 
 |**Einstellung**                                     |**Erläuterung** |
 |:---                                                |:--- |
@@ -40,8 +40,8 @@ In der folgenden Tabelle finden Sie Hinweise zu den einzelnen Formateinstellunge
 |**Produkt-URL**                                     |Wählen, ob die URL des Artikels oder der Variante übertragen wird. Varianten-URLs können nur in Kombination mit dem Ceres Webshop übertragen werden. |
 |**Mandant**                                         |Mandanten wählen. Diese Einstellung wird für den URL-Aufbau verwendet. |
 |**URL-Parameter**                                   |Suffix für die Produkt-URL eingeben, wenn ein Suffix für den Export erforderlich ist. Die Produkt-URL wird dann um die eingegebene Zeichenkette erweitert, wenn weiter oben die Option **übertragen** für die Produkt-URL aktiviert wurde. |
-|**Auftragsherkunft**                                |Die Auftragsherkunft wählen, die beim Auftragsimport zugeordnet werden soll. |
-|**Marktplatzkonto**                                 |Marktplatzkonto aus der Dropdown-Liste wählen. Die Produkt-URL wird um die gewählte Auftragsherkunft erweitert, damit die Verkäufe später analysiert werden können. |
+|**Auftragsherkunft**                                |Die Auftragsherkunft wählen, die beim Auftragsimport zugeordnet werden soll. Die Produkt-URL wird um die gewählte Auftragsherkunft erweitert, damit die Verkäufe später analysiert werden können. |
+|**Marktplatzkonto**                                 |Marktplatzkonto aus der Dropdown-Liste wählen. |
 |**Sprache**                                         |Sprache aus der Dropdown-Liste wählen. |
 |**Artikelname**                                     |**Name 1**, **Name 2** oder **Name 3** wählen. Die Namen sind im Tab **Texte** eines Artikels gespeichert. Im Feld **Maximale Zeichenlänge (def. Text)** optional eine Zahl eingeben, wenn die Schnittstelle eine Begrenzung der Länge des Artikelnamen beim Export vorgibt. |
 |**Vorschautext**                                    |Wählen, ob und welcher Text als Vorschautext übertragen werden soll.<br/> Im Feld **Maximale Zeichenlänge (def. Text)** optional eine Zahl eingeben, wenn eine Begrenzung der Länge des Vorschautextes beim Export vorgegeben ist.<br/> Option **HTML-Tags entfernen** aktivieren, damit die HTML-Tags beim Export entfernt werden.<br/> Im Feld **Erlaubte HTML-Tags, kommagetrennt (def. Text)** optional die HTML-Tags eingeben, die beim Export erlaubt sind. Wenn mehrere Tags eingegeben werden, mit Komma trennen. |
@@ -59,7 +59,7 @@ In der folgenden Tabelle finden Sie Hinweise zu den einzelnen Formateinstellunge
 |**UVP**                                             |Aktivieren, um den UVP zu übertragen. |
 |**Versandkosten**                                   |Aktivieren, damit die Versandkosten aus der Konfiguration übernommen werden. Wenn die Option aktiviert ist, stehen in den beiden Dropdown-Listen Optionen für die Konfiguration und die Zahlungsart zur Verfügung.<br/> Option **Pauschale Versandkosten übertragen** aktivieren, damit die pauschalen Versandkosten übertragen werden. Wenn diese Option aktiviert ist, muss im Feld darunter ein Betrag eingegeben werden. |
 |**MwSt.-Hinweis**                                   |Diese Option ist für dieses Format nicht relevant. |
-|**Artikelverfügbarkeit überschreiben**              |Option aktivieren und in die Felder **1** bis **10**, die die ID der Verfügbarkeit darstellen, Artikelverfügbarkeiten eintragen. Somit werden die Artikelverfügbarkeiten, die im Menü **System » Artikel » Verfügbarkeit** eingestellt wurden, überschrieben. |
+|**Artikelverfügbarkeit überschreiben**              |Option aktivieren und in die Felder **1** bis **10**, die die ID der Verfügbarkeit darstellen, Artikelverfügbarkeiten eintragen. Somit werden die Artikelverfügbarkeiten, die im Menü **Einrichtung » Artikel » Verfügbarkeit** eingestellt wurden, überschrieben. |
 
 _Tab. 1: Einstellungen für das Datenformat **AwinCOM-Plugin**_
 
@@ -77,7 +77,7 @@ _Tab. 1: Einstellungen für das Datenformat **AwinCOM-Plugin**_
 |img_small              |Preview-URL des Bildes. Variantenbilder werden vor Artikelbildern priorisiert. |
 |img_medium             |Middle-URL des Bildes. Variantenbilder werden vor Artikelbildern priorisiert. |
 |img_large              |URL des Bildes. Variantenbilder werden vor Artikelbildern priorisiert. |
-|manufacturer           |Der **Name des Herstellers** des Artikels. Der **Externe Name** unter **Einstellungen » Artikel » Hersteller** wird bevorzugt, wenn vorhanden. |
+|manufacturer           |Der **Name des Herstellers** des Artikels. Der **Externe Name** unter **Einrichtung » Artikel » Hersteller** wird bevorzugt, wenn vorhanden. |
 |prod_url               |Der URL-Pfad des Artikels abhängig vom gewählten Mandanten in den Formateinstellungen. |
 |prod_ean               |Entsprechend der Formateinstellung **Barcode**. |
 |shipping_costs         |Entsprechend der Formateinstellung **Versandkosten**. |
@@ -87,4 +87,4 @@ _Tab. 1: Einstellungen für das Datenformat **AwinCOM-Plugin**_
 
 ## 4 Lizenz
 
-Das gesamte Projekt unterliegt der GNU AFFERO GENERAL PUBLIC LICENSE – weitere Informationen finden Sie in der [LICENSE.md](https://github.com/plentymarkets/plugin-elastic-export-awin-com/blob/master/LICENSE.md).
+Das gesamte Projekt unterliegt der GNU AFFERO GENERAL PUBLIC LICENSE – weitere Informationen findest du in der [LICENSE.md](https://github.com/plentymarkets/plugin-elastic-export-awin-com/blob/master/LICENSE.md).
