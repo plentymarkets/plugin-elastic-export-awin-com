@@ -1,5 +1,10 @@
 # Release Notes für Elastic Export Awin.com
 
+## v1.0.12 (2020-04-03)
+
+### Geändert
+- Der User Guide wurde aktualisiert (Beschreibung ins plentymarkets Handbuch umgezogen).
+
 ## v1.0.11 (2019-10-08)
 
 ### Geändert

@@ -1,5 +1,10 @@
 # Release Notes for Elastic Export Awin.com
 
+## v1.0.12 (2020-04-03)
+
+### Changed
+- The user guide was updated (moved user guide to plentymarkets manual).
+
 ## v1.0.11 (2019-10-08)
 
 ### Changed
@@ -19,7 +24,7 @@
 
 ### Changed
 - The class FiltrationService is responsible for the filtration of all variations.
-- Preview images updated. 
+- Preview images updated.
 
 ## v1.0.7 (2018-02-16)
 
@@ -69,6 +74,6 @@
 - Changed plugin icons.
 
 ## v1.0.0 (2017-03-08)
- 
+
 ### Added
 - Added initial plugin files
