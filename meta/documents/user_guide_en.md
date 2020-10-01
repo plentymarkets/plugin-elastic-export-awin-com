@@ -2,7 +2,7 @@
 # ElasticExportAwinCOM plugin user guide
 
 <div class="alert alert-info" role="alert">
-  To find out how to set up the Kauflux plugin, visit the <a href="https://knowledge.plentymarkets.com/en/markets/price-search-engines/awin" target="_blank">plentymarkets manual</a>.
+  To find out how to set up the plugin, visit the <a href="https://knowledge.plentymarkets.com/en/markets/price-search-engines/awin" target="_blank">plentymarkets manual</a>.
 </div>
 
 ## License
