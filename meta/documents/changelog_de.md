@@ -1,5 +1,10 @@
 # Release Notes für Elastic Export Awin.com
 
+## v1.0.12 (2022-05-26)
+
+### Geändert
+- UPDATE - Zusätzliche Updates für Kompatibilität mit PHP 8.
+
 ## v1.0.11 (2019-10-08)
 
 ### Geändert

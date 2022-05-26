@@ -104,14 +104,14 @@ class AwinCOM extends CSVPluginGenerator
                 // Get the data from Elastic Search
                 $resultList = $elasticSearch->execute();
 
-                if(count($resultList['error']) > 0)
+                if(count($resultList['error'] ?? []) > 0)
                 {
                     $this->getLogger(__METHOD__)->error('ElasticExportAwinCOM::log.occurredElasticSearchErrors', [
                         'Error message' => $resultList['error'],
                     ]);
                 }
 
-                if(is_array($resultList['documents']) && count($resultList['documents']) > 0)
+                if(is_array($resultList['documents']) && count($resultList['documents'] ?? []) > 0)
                 {
                     $previousItemId = null;
 
@@ -217,7 +217,7 @@ class AwinCOM extends CSVPluginGenerator
 			$imageMiddle = '';
 			$imageLarge = '';
 
-			if(count($imageData))
+			if(count($imageData ?? []))
 			{
 				$imagePreview = $imageData[0]['urlPreview'];
 				$imageMiddle = $imageData[0]['urlMiddle'];
